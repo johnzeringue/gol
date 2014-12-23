@@ -1,0 +1,6 @@
+# binaries
+build
+bin
+
+# platform specifics
+.DS_Store
