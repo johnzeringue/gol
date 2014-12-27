@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 
-#include "GOLModel.h"
-#include "GOLView.h"
+#include "GOLModel.hpp"
+#include "GOLView.hpp"
 
 using std::string;
 using std::cout;

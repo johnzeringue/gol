@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "GOLModel.h"
+#include "GOLModel.hpp"
 
 using std::string;
 

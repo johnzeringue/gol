@@ -1,0 +1,73 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bluepapa32:gradle-watch-plugin:0.1.4'
+    }
+}   
+
+apply plugin: 'com.bluepapa32.watch'
+apply plugin: 'cpp'
+
+// use C++11
+binaries.all {
+    cppCompiler.args '-std=c++11'
+}
+
+libraries {
+    gol {}
+}
+
+executables {
+    main {}
+    test {}
+
+    all {
+        binaries.all {
+            lib libraries.gol
+        }
+    }
+}
+
+// ignore temporary files in compilation by explicitly defining source files
+sources {
+    all {
+        cpp {
+            source {
+                include "**/*.cpp"
+            }
+
+            exportedHeaders {
+                include "**/*.hpp"
+            }
+        }
+    }
+}
+
+task run(type: Exec, dependsOn: 'installMainExecutable') {
+    description 'Runs main executable.'
+    workingDir 'build/install/mainExecutable'
+    commandLine './main'
+}
+
+task test(type: Exec, dependsOn: 'installTestExecutable') {
+    description 'Runs tests.'
+    workingDir 'build/install/testExecutable'
+    commandLine './test'
+}
+
+// configure watch to run test when any of the source files change except for
+// temporary files and files specific to the main executable
+watch {
+    test {
+        files fileTree(dir: 'src', excludes: ['main/**', '**/*.swp'])
+        tasks 'test'
+    }
+}
+
+// alias watch as autotest
+task autotest(dependsOn: 'watch') {
+    description 'Automatically runs tests when source files are modified.'
+}

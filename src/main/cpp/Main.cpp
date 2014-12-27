@@ -1,5 +1,5 @@
-#include "GOLModel.h"
-#include "GOLView.h"
+#include "GOLModel.hpp"
+#include "GOLView.hpp"
 
 int main() {
     // make a "spinner"

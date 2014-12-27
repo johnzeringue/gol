@@ -1,4 +1,4 @@
-#include "GOLModel.h"
+#include "GOLModel.hpp"
 
 #include <iostream>
 #include <vector>

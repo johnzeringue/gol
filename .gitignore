@@ -1,6 +1,6 @@
-# binaries
+# Gradle
+.gradle
 build
-bin
 
-# platform specifics
+# OS X
 .DS_Store
