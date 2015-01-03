@@ -8,9 +8,7 @@ int main() {
     model.flip(1, 1);
     model.flip(2, 1);
 
+    // show it to the user
     GOLView view('+', '.');
-    for (int i = 0; i < 5; i++) {
-        view.display(model);
-        model.step();
-    }
+    view.display(model);
 }

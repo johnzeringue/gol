@@ -48,6 +48,9 @@ sources {
 
 task run(type: Exec, dependsOn: 'installMainExecutable') {
     description 'Runs main executable.'
+
+    standardInput = System.in
+
     workingDir 'build/install/mainExecutable'
     commandLine './main'
 }

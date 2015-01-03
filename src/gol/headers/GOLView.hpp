@@ -5,8 +5,6 @@
 
 #include "GOLModel.hpp"
 
-using std::string;
-
 class GOLView {
     public:
         //
@@ -25,6 +23,14 @@ class GOLView {
         // METHODS
         //
         void display(GOLModel model);
+
+    private:
+        //
+        // METHODS
+        //
+        void printRow(unsigned row, GOLModel model);
+        void printGrid(GOLModel model);
+        std::string promptForInput();
 };
 
 #endif
